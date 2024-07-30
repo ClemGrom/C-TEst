@@ -3,11 +3,14 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
+      <ul>
+      <li v-for="item in apiData" :key="item.id">
+        <router-link :to="`/info/${item.id}`">{{ item.title }}</router-link>
+      </li>
+    </ul>
     </nav>
     <router-view></router-view>
-    <ul>
-      <li v-for="item in apiData" :key="item.id">{{ item.title }}</li>
-    </ul>
+    
   </div>
 </template>
 
@@ -21,7 +24,7 @@ export default {
   },
   data() {
     return {
-      apiData: [] // Initialiser comme un tableau vide
+      apiData: []
     }
   },
   methods: {
@@ -31,7 +34,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchData() // Appeler fetchData lorsque le composant est monté
+    this.fetchData() 
   }
 }
 </script>
